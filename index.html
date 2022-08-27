@@ -62,6 +62,16 @@
 				background: black;
 			}
 
+			#container
+			{
+				display: none;
+				height: 100%;
+				flex-direction: row;
+				justify-content: center;
+				align-items: center;
+				animation: fadein 1s;
+			}
+
 			#davy
 			{
 				display: block;
@@ -71,17 +81,6 @@
 				object-fit: cover;
 				animation: scaling 120s infinite;
 				z-index: -1;
-			}
-
-			#container
-			{
-				display: flex;
-				visibility: hidden;
-				height: 100%;
-				flex-direction: row;
-				justify-content: center;
-				align-items: center;
-				animation: fadein 1s;
 			}
 
 			#information
@@ -228,7 +227,7 @@
 			{
 				let image = new Image();
 
-				image.onload = () => document.getElementById('container').style.visibility = 'visible';
+				image.onload = () => document.getElementById('container').style.display = 'flex';
 				image.src = 'davy.png';
 			};
 
