@@ -224,7 +224,13 @@
 			}
 		</style>
 		<script defer>
-			window.onload = () => document.getElementById('container').style.visibility = 'visible';
+			window.onload = () =>
+			{
+				let image = new Image();
+
+				image.onload = () => document.getElementById('container').style.visibility = 'visible';
+				image.src = 'davy.png';
+			};
 
 			async function copy(element, text)
 			{
