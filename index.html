@@ -104,6 +104,16 @@
 				margin: 12px;
 			}
 
+			#copyright
+			{
+				display: block;
+				position: absolute;
+				right: 0;
+				bottom: -30px;
+				color: wheat;
+				font-size: 10px;
+			}
+
 			#avatar
 			{
 				display: block;
@@ -214,7 +224,7 @@
 			#emote
 			{
 				display: block;
-				position: absolute;
+				position: fixed;
 				height: 20vw;
 				left: 10vw;
 				bottom: 0;
@@ -222,14 +232,16 @@
 				animation: fadein 5s;
 			}
 
-			#copyright
+			#code
 			{
 				display: block;
-				position: absolute;
-				right: 0;
-				bottom: -30px;
-				color: wheat;
-				font-size: 10px;
+				position: fixed;
+				height: 64px;
+				right: 16px;
+				bottom: 16px;
+				background: white;
+				border: 2px solid white;
+				border-radius: 4px;
 			}
 		</style>
 		<script defer>
@@ -329,8 +341,11 @@
 					Это наделал песик..
 				</div>
 			</div>
-			<div id="copied">Скопировано!</div>
 			<img id="emote" src="emote.png" />
+			<a href="code.svg" download>
+				<img id="code" src="code.svg" />
+			</a>
+			<div id="copied">Скопировано!</div>
 		</div>
 	</body>
 </html>
