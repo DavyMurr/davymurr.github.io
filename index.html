@@ -40,7 +40,7 @@
 				}
 			}
 
-			@keyframes copied
+			@keyframes copy
 			{
 				0%
 				{
@@ -209,18 +209,6 @@
 				margin: 4px;
 			}
 
-			#copied
-			{
-				display: block;
-				position: fixed;
-				top: -18px;
-				color: greenyellow;
-				font-family: Courier;
-				font-size: 18px;
-				font-weight: 1000;
-				animation: copied 1s ease-in forwards;
-			}
-
 			#emote
 			{
 				display: block;
@@ -243,6 +231,18 @@
 				border: 2px solid white;
 				border-radius: 4px;
 			}
+
+			#copy
+			{
+				display: block;
+				position: fixed;
+				top: -18px;
+				color: greenyellow;
+				font-family: Courier;
+				font-size: 18px;
+				font-weight: 1000;
+				animation: copy 1s ease-in forwards;
+			}
 		</style>
 		<script defer>
 			window.onload = () =>
@@ -259,15 +259,15 @@
 				{
 					await navigator.clipboard.writeText(text);
 
-					let copied = document.getElementById('copied');
+					let copy = document.getElementById('copy');
 					let rect = element.getBoundingClientRect();
 					
-					copied.style.animation = 'none';
-					copied.style.top = rect.top + 2;
-					copied.style.left = rect.right - 20;
+					copy.style.animation = 'none';
+					copy.style.top = rect.top + 2;
+					copy.style.left = rect.right - 20;
 
-					copied.offsetHeight;
-					copied.style.animation = null;
+					copy.offsetHeight;
+					copy.style.animation = null;
 				}
 				catch(error)
 				{
@@ -346,6 +346,6 @@
 		<a href="code.svg" download>
 			<img id="code" src="code.svg" />
 		</a>
-		<div id="copied">Скопировано!</div>
+		<div id="copy">Скопировано!</div>
 	</body>
 </html>
