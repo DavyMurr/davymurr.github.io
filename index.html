@@ -1,8 +1,6 @@
 <html>
 	<head>
-		<title>
-			Визитная карточка Дэйви!
-		</title>
+		<title>Визитная карточка Дэйви!</title>
 		<style>
 			@keyframes scale
 			{
@@ -83,15 +81,15 @@
 				z-index: -1;
 			}
 
-			#information
+			#panel
 			{
 				display: flex;
 				margin: 24px;
-				padding: 12px;
+				padding: 16px;
+				max-width: 640px;
 				flex-direction: column;
 				justify-content: center;
-				background: rgba(0, 0, 0, 0.35);
-				border: 2px solid greenyellow;
+				background: rgba(0, 0, 0, 0.5);
 				border-radius: 32px;
 				text-align: center;
 				font-family: Verdana;
@@ -100,19 +98,9 @@
 				animation: fade 3s;
 			}
 
-			#information > *
+			#panel > *
 			{
 				margin: 12px;
-			}
-
-			#copyright
-			{
-				display: block;
-				position: absolute;
-				right: 0;
-				bottom: -32px;
-				color: wheat;
-				font-size: 10px;
 			}
 
 			#avatar
@@ -125,16 +113,14 @@
 				box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 			}
 
-			#header
-			{
-				display: block;
-				background: rgba(0, 0, 0, 0.35);
-				border-radius: 16px;
-				box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-			}
-
 			#title
 			{
+				display: block;
+			}
+
+			#title h1
+			{
+				all: unset;
 				display: block;
 				padding: 16px;
 				color: black;
@@ -142,23 +128,27 @@
 				font-weight: 1000;
 				background: linear-gradient(45deg, red, greenyellow);
 				border-radius: 16px;
+				box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
 			}
 
-			#biography
+			#title span
 			{
 				display: block;
+				margin: 0 16px;
 				padding: 12px;
 				color: wheat;
 				font-size: 16px;
 				text-shadow: 1px 1px 2px black;
 				line-height: 22px;
+				background: rgba(0, 0, 0, 0.5);
+				border-radius: 0 0 16px 16px;
+				box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
 			}
 
 			#pages
 			{
 				display: flex;
 				flex-direction: row;
-				justify-content: space-around;
 				font-size: 18px;
 				text-shadow: 1px 1px 2px black;
 			}
@@ -166,48 +156,99 @@
 			#verso
 			{
 				display: flex;
+				flex: 1;
 				flex-direction: column;
 				justify-content: space-between;
+				align-items: flex-start;
+			}
+
+			#verso .personal:hover
+			{
+				border-left: 10px solid orangered;
+			}
+
+			#verso .personal div
+			{
 				align-items: flex-start;
 			}
 
 			#recto
 			{
 				display: flex;
+				flex: 1;
 				flex-direction: column;
 				justify-content: space-between;
+				align-items: flex-end;
+			}
+
+			#recto .personal:hover
+			{
+				border-right: 10px solid orangered;
+			}
+
+			#recto .personal div
+			{
 				align-items: flex-end;
 			}
 
 			.personal
 			{
 				all: unset;
-				display: block;
-				margin: 12px;
-				padding: 12px;
+				cursor: pointer;
+				display: flex;
+				flex-direction: row;
+				justify-content: center;
+				align-items: center;
+				margin: 12px 16px;
+				padding: 10px;
 				color: wheat;
-				background: rgba(0, 0, 0, 0.35);
+				background: rgba(0, 0, 0, 0.5);
+				border: 0 solid rgba(255, 0, 0, 0);
 				border-radius: 10px;
-				box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+				box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
 				transition: all 250ms;
 			}
 
 			.personal:hover
 			{
-				cursor: pointer;
-				background: rgba(0, 0, 0, 0.5);
+				background: rgba(127, 127, 127, 0.5);
 			}
 
-			.personal:active
+			.personal:hover:active
 			{
-				background: rgba(0, 0, 0, 0.65);
-				box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+				background: rgba(127, 127, 127, 0.75);
 				transition: none;
 			}
 
-			.personal i, .personal span
+			.personal i, .personal div
 			{
-				margin: 4px;
+				margin: 8px;
+			}
+
+			.personal div
+			{
+				display: flex;
+				flex-direction: column;
+			}
+
+			.personal div h1
+			{
+				all: unset;
+			}
+
+			.personal div span
+			{
+				font-size: 12px;
+			}
+
+			#copyright
+			{
+				display: block;
+				position: absolute;
+				right: 0;
+				bottom: -32px;
+				color: wheat;
+				font-size: 10px;
 			}
 
 			#emote
@@ -289,53 +330,75 @@
 	<body>
 		<div id="container">
 			<img id="davy" src="davy.png" />
-			<div id="information">
+			<div id="panel">
 				<img id="avatar" src="avatar.png" />
-				<div id="header">
-					<div id="title">
-						Пегасичный профиль!
-					</div>
-					<div id="biography">
-						Красный <b>жеребец</b> с крылышками и у меня есть свой милашный <b>пёсик</b>!<br>
-						Люблю скейтить по улицам Москвы, а ещё играть в игрульбки..<br>
+				<div id="title">
+					<h1>Пегасичный профиль!</h1>
+					<span>
+						Красный <b>жеребец</b> с крылышками и у меня есть свой милашный <b>пёсик</b>!
+						Люблю скейтить по улицам Москвы, а ещё играть в игрульбки..
 						Я взрослый <b>пегасик</b> и мне нравятся пушистики! <b>:о</b>
-					</div>
+					</span>
 				</div>
 				<div id="pages">
 					<div id="verso">
 						<a class="personal" href="https://discord.gg/QbuVGMErrX">
-							<i class="fa-brands fa-discord"></i>
-							<span><b>Discord</b>-сервер</span>
+							<i class="fa-brands fa-discord fa-xl"></i>
+							<div>
+								<h1><b>Discord</b>-сервер</h1>
+								<span>Tea Kingdom</span>
+							</div>
 						</a>
 						<a class="personal" href="https://www.youtube.com/channel/UCjZaFrIVsVSX445PsWIR84g">
-							<i class="fa-brands fa-youtube"></i>
-							<span><b>YouTube</b> Канал</span>
+							<i class="fa-brands fa-youtube fa-xl"></i>
+							<div>
+								<h1><b>YouTube</b> Канал</h1>
+								<span>Дэйви</span>
+							</div>
 						</a>
 						<button class="personal" onclick="copy(this, 'DavyMurr#2984')">
-							<i class="fa-brands fa-battle-net"></i>
-							<span>Мой <b>Battle.net</b></span>
+							<i class="fa-brands fa-battle-net fa-xl"></i>
+							<div>
+								<h1>Мой <b>Battle.net</b></h1>
+								<span>DavyMurr#2984</span>
+							</div>
 						</button>
 						<button class="personal" onclick="copy(this, 'DaveMeow')">
-							<i class="fa-brands fa-xbox"></i>
-							<span>Мой <b>Xbox</b></span>
+							<i class="fa-brands fa-xbox fa-xl"></i>
+							<div>
+								<h1>Мой <b>Xbox</b></h1>
+								<span>DaveMeow</span>
+							</div>
 						</button>
 					</div>
 					<div id="recto">
 						<a class="personal" href="https://vk.com/club207917455">
-							<span>Группа <b>VK</b></span>
-							<i class="fa-brands fa-vk"></i>
+							<div>
+								<h1>Группа <b>VK</b></h1>
+								<span>Tea Kingdom</span>
+							</div>
+							<i class="fa-brands fa-vk fa-xl"></i>
 						</a>
 						<a class="personal" href="https://steamcommunity.com/profiles/76561198255226041">
-							<span>Мой <b>Steam</b></span>
-							<i class="fa-brands fa-steam"></i>
+							<div>
+								<h1>Мой <b>Steam</b></h1>
+								<span>Davy</span>
+							</div>
+							<i class="fa-brands fa-steam fa-xl"></i>
 						</a>
 						<a class="personal" href="https://open.spotify.com/user/p0bkcraxaqnd6o529v7i3oni8">
-							<span>Мой <b>Spotify</b></span>
-							<i class="fa-brands fa-spotify"></i>
+							<div>
+								<h1>Мой <b>Spotify</b></h1>
+								<span>Davy</span>
+							</div>
+							<i class="fa-brands fa-spotify fa-xl"></i>
 						</a>
 						<a class="personal" href="https://www.twitch.tv/davymurr">
-							<span>Мой <b>Twitch</b></span>
-							<i class="fa-brands fa-twitch"></i>
+							<div>
+								<h1>Мой <b>Twitch</b></h1>
+								<span>DavyMurr</span>
+							</div>
+							<i class="fa-brands fa-twitch fa-xl"></i>
 						</a>
 					</div>
 				</div>
